@@ -15,8 +15,8 @@ const path = require('path');
 const program = require('commander');
 const exec = require('child_process');
 const pkg = require('./package.json');
-
-
+const os = require('os');
+const sys = require('sys')
 path.basename(path.dirname(fs.realpathSync(__filename)));
 path.basename(process.cwd());
 
@@ -50,17 +50,60 @@ let list = (directory,options)  => {
     exec(parameterizedCommand,output);
     
 };
+var getMachineType = function(){
+    // return os.platform();
+    console.log('oya');
+};
+const update = function(){
+    // return os.platform();
+    console.log('oya');
+};
+const mosversion = function(){
+    console.log('Version Called');
+}
+// program
+//     .version(pkg.version)
+//     .command('list [directory]')
+//     .option('-a, --all', 'List all')
+//     .option("--machineType","return machine type")
+//     .option('-l, --long','Long list format')
+//     // .action(hi)
+//     .action(welcometxt)
+//     .action(function(cmd){
+//         var resultObject = {};
+       
+//         if(cmd.machineType){
+//             resultObject.machineType = getMachineType();
+//         }
+//         return resultObject;
+//     });
+program.command ('info')
+.version('Version ' +  pkg.version)
+.description('Main')
+.option("--machineType","return machine type")
+.action(function(cmd){
+        var resultObject = {};
+       
+        if(cmd.machineType){
+            resultObject.machineType = getMachineType();
+        }
+        return resultObject;
+    });
 
-
-program
-    .version(pkg.version)
-    .command('list [directory]')
-    .option('-a, --all', 'List all')
-    .option('-l, --long','Long list format')
-    // .action(list);
-    .action(welcometxt);
-
+program.command ('version')
+.version('Version ' +  pkg.version)
+.description('Mos Version')
+.option("--machineType","return machine type")
+.action(function(cmd){
+        var resultObject = {};
+       
+        if(cmd.machineType){
+            resultObject.machineType = getMachineType();
+        }
+        return resultObject;
+    });
 program.parse(process.argv);
+
 
 // if program was called with no arguments, show help.
 if (program.args.length === 0) program.help();
