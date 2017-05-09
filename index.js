@@ -13,7 +13,7 @@ const fs          = require('fs');
 const files = require('./lib/files');
 const path = require('path');
 const program = require('commander');
-const exec = require('child_process');
+const exec = require('child_process').exec  ;
 const pkg = require('./package.json');
 const os = require('os');
 const sys = require('sys')
@@ -50,7 +50,7 @@ let list = (directory,options)  => {
     exec(parameterizedCommand,output);
     
 };
-var getMachineType = function(){
+const getMachineType = function(){
     // return os.platform();
     console.log('oya');
 };
@@ -60,7 +60,15 @@ const update = function(){
 };
 const mosversion = function(){
     console.log('Version Called');
+child = exec("pwd", function (error, stdout, stderr) {
+  sys.print('stdout: ' + stdout);
+  sys.print('stderr: ' + stderr);
+  if (error !== null) {
+    console.log('exec error: ' + error);
+  }
+});
 }
+
 // program
 //     .version(pkg.version)
 //     .command('list [directory]')
@@ -97,7 +105,7 @@ program.command ('version')
 .action(function(cmd){
         var resultObject = {};
        
-        if(cmd.machineType){
+        if(cmd.version){
             resultObject.machineType = getMachineType();
         }
         return resultObject;
