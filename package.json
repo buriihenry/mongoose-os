@@ -1,0 +1,32 @@
+{
+  "name": "mos-cli",
+  "version": "1.0.0",
+  "description": "Mongoose OS npm wrapper.",
+  "main": "\t",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/denzelwamburu/mos-cli"
+  },
+  "keywords": [
+    "mongoose-os",
+    "mos",
+    "mongoose",
+    "embedded-scripting"
+  ],
+  "author": "Denzel Wamburu",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "clear": "0.0.1",
+    "clui": "^0.3.1",
+    "figlet": "^1.2.0",
+    "inquirer": "^3.0.6",
+    "lodash": "^4.17.4",
+    "minimist": "^1.2.0",
+    "preferences": "^0.2.1",
+    "touch": "^1.0.0"
+  }
+}
