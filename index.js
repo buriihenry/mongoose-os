@@ -19,6 +19,8 @@ const os = require('os');
 const sys = require('sys')
 path.basename(path.dirname(fs.realpathSync(__filename)));
 path.basename(process.cwd());
+const spawn = require( 'child_process' ).spawn;
+
 
 // clear();
 const welcometxt = console.log(
@@ -26,10 +28,16 @@ const welcometxt = console.log(
     figlet.textSync('MOS CLI', { horizontalLayout: 'full' })
   )
 );
+//example 
+const ls = spawn( 'ls', [  './' ] );
+
+ls.stdout.on( 'data', data => {
+    console.log( `stdout: ${data}` );
+});
 /**
- * list function definition
- *
- */
+//  * list function definition
+//  *
+//  */
 let list = (directory,options)  => {
     const cmd = 'ls';
     let params = [];
@@ -69,22 +77,22 @@ child = exec("pwd", function (error, stdout, stderr) {
 });
 }
 
-// program
-//     .version(pkg.version)
-//     .command('list [directory]')
-//     .option('-a, --all', 'List all')
-//     .option("--machineType","return machine type")
-//     .option('-l, --long','Long list format')
-//     // .action(hi)
-//     .action(welcometxt)
-//     .action(function(cmd){
-//         var resultObject = {};
+// // program
+// //     .version(pkg.version)
+// //     .command('list [directory]')
+// //     .option('-a, --all', 'List all')
+// //     .option("--machineType","return machine type")
+// //     .option('-l, --long','Long list format')
+// //     // .action(hi)
+// //     .action(welcometxt)
+// //     .action(function(cmd){
+// //         var resultObject = {};
        
-//         if(cmd.machineType){
-//             resultObject.machineType = getMachineType();
-//         }
-//         return resultObject;
-//     });
+// //         if(cmd.machineType){
+// //             resultObject.machineType = getMachineType();
+// //         }
+// //         return resultObject;
+// //     });
 program.command ('info')
 .version('Version ' +  pkg.version)
 .description('Main')
