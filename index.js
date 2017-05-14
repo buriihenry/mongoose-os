@@ -1,81 +1,82 @@
 #!/usr/bin/env node
+
 'use strict';
-const chalk       = require('chalk');
-const clear       = require('clear');
-const CLI         = require('clui');
-const figlet      = require('figlet');
-const inquirer    = require('inquirer');
+const chalk = require('chalk');
+const clear = require('clear');
+const CLI = require('clui');
+const figlet = require('figlet');
+const inquirer = require('inquirer');
 const Preferences = require('preferences');
-const Spinner     = CLI.Spinner;
-const _           = require('lodash');
-const touch       = require('touch');
-const fs          = require('fs');
+const Spinner = CLI.Spinner;
+const _ = require('lodash');
+const touch = require('touch');
+const fs = require('fs');
 const files = require('./lib/files');
 const path = require('path');
 const program = require('commander');
-const exec = require('child_process').exec  ;
+const exec = require('child_process').exec;
 const pkg = require('./package.json');
 const os = require('os');
-const sys = require('sys')
+// const sys = require('sys')
 path.basename(path.dirname(fs.realpathSync(__filename)));
 path.basename(process.cwd());
-const spawn = require( 'child_process' ).spawn;
+const spawn = require('child_process').spawn;
 
 
 // clear();
 const welcometxt = console.log(
-  chalk.yellow(
-    figlet.textSync('MOS CLI', { horizontalLayout: 'full' })
-  )
+	chalk.yellow(
+		figlet.textSync('MOS CLI', {
+			horizontalLayout: 'full'
+		})
+	)
 );
 //example 
-const ls = spawn( 'ls', [  './' ] );
+const ls = spawn('ls', ['./']);
 
-ls.stdout.on( 'data', data => {
-    console.log( `stdout: ${data}` );
+ls.stdout.on('data', data => {
+	console.log(`stdout: ${data}`);
 });
 /**
 //  * list function definition
 //  *
 //  */
-let list = (directory,options)  => {
-    const cmd = 'ls';
-    let params = [];
-    
-    if (options.all) params.push("a");
-    if (options.long) params.push("l");
-    let parameterizedCommand = params.length 
-                                ? cmd + ' -' + params.join('') 
-                                : cmd ;
-    if (directory) parameterizedCommand += ' ' + directory ;
-    
-    let output = (error, stdout, stderr) => {
-        if (error) console.log(chalk.red.bold.underline("exec error:") + error);
-        if (stdout) console.log(chalk.green.bold.underline("Result:") + stdout);
-        if (stderr) console.log(chalk.red("Error: ") + stderr);
-    };
-    
-    exec(parameterizedCommand,output);
-    
+let list = (directory, options) => {
+	const cmd = 'ls';
+	let params = [];
+
+	if (options.all) params.push("a");
+	if (options.long) params.push("l");
+	let parameterizedCommand = params.length ?
+		cmd + ' -' + params.join('') :
+		cmd;
+	if (directory) parameterizedCommand += ' ' + directory;
+
+	let output = (error, stdout, stderr) => {
+		if (error) console.log(chalk.red.bold.underline("exec error:") + error);
+		if (stdout) console.log(chalk.green.bold.underline("Result:") + stdout);
+		if (stderr) console.log(chalk.red("Error: ") + stderr);
+	};
+
+	exec(parameterizedCommand, output);
+
 };
-const getMachineType = function(){
-    // return os.platform();
-    console.log('oya');
+const getMachineType = function () {
+	// return os.platform();
+	console.log('oya');
 };
-const update = function(){
-    // return os.platform();
-    console.log('oya');
+const update = function () {
+	// return os.platform();
+	console.log('oya');
 };
-const mosversion = function(){
-    console.log('Version Called');
-child = exec("pwd", function (error, stdout, stderr) {
-  sys.print('stdout: ' + stdout);
-  sys.print('stderr: ' + stderr);
-  if (error !== null) {
-    console.log('exec error: ' + error);
-  }
-});
-}
+// const gui = function(){
+// console.log("Starting Gui");
+// const ls = spawn( 'ls', [  './' ] );
+
+// ls.stdout.on( 'data', data => {
+//     console.log( `stdout: ${data}` );
+// });
+// }
 
 // // program
 // //     .version(pkg.version)
@@ -87,37 +88,61 @@ child = exec("pwd", function (error, stdout, stderr) {
 // //     .action(welcometxt)
 // //     .action(function(cmd){
 // //         var resultObject = {};
-       
+
 // //         if(cmd.machineType){
 // //             resultObject.machineType = getMachineType();
 // //         }
 // //         return resultObject;
 // //     });
-program.command ('info')
-.version('Version ' +  pkg.version)
-.description('Main')
-.option("--machineType","return machine type")
-.action(function(cmd){
-        var resultObject = {};
-       
-        if(cmd.machineType){
-            resultObject.machineType = getMachineType();
-        }
-        return resultObject;
-    });
+program.command('info')
+	.version('Version ' + pkg.version)
+	.description('Main')
+	.option("--machineType", "return machine type")
+	.action(function (cmd) {
+		var resultObject = {};
 
-program.command ('version')
-.version('Version ' +  pkg.version)
-.description('Mos Version')
-.option("--machineType","return machine type")
-.action(function(cmd){
-        var resultObject = {};
-       
-        if(cmd.version){
-            resultObject.machineType = getMachineType();
-        }
-        return resultObject;
-    });
+		if (cmd.machineType) {
+			resultObject.machineType = getMachineType();
+		}
+		return resultObject;
+	});
+
+program.command('version')
+	.version('Version ' + pkg.version)
+	.description('Mos Version')
+	.option("--machineType", "return machine type")
+	.action(function (cmd) {
+		var resultObject = {};
+
+		if (cmd.version) {
+			resultObject.machineType = getMachineType();
+		}
+		return resultObject;
+	});
+
+// Get Mos --help
+program.command('moshelp')
+	.version('Mongoose OS Help')
+	.description('Mongoose OS Help')
+	.option("--help", "Return Mongoose OS Version")
+	.action(function () {
+		// gui();
+		const gui = spawn('~/.mos/bin/mos ui');
+
+	gui.stdout.on('data', data => {
+			console.log(`stdout: ${data}`);
+		});
+
+// child = exec("pwd", function (error, stdout, stderr) {
+//   sys.print('stdout: ' + stdout);
+//   sys.print('stderr: ' + stderr);
+//   if (error !== null) {
+//     console.log('exec error: ' + error);
+//   }
+  
+// });
+	});
+
 program.parse(process.argv);
 
 
