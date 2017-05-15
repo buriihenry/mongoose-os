@@ -21,22 +21,22 @@ const os = require('os');
 path.basename(path.dirname(fs.realpathSync(__filename)));
 path.basename(process.cwd());
 const spawn = require('child_process').spawn;
-
+const log = console.log;
 
 // clear();
 const welcometxt = console.log(
 	chalk.yellow(
-		figlet.textSync('MOS CLI', {
+		figlet.textSync('MOS-CLI', {
 			horizontalLayout: 'full'
 		})
 	)
 );
-//example 
-const ls = spawn('ls', ['./']);
+//List Files  
+// const ls = spawn('ls', ['./']);
 
-ls.stdout.on('data', data => {
-	console.log(`stdout: ${data}`);
-});
+// ls.stdout.on('data', data => {
+// 	console.log(`stdout: ${data}`);
+// });
 /**
 //  * list function definition
 //  *
@@ -121,26 +121,34 @@ program.command('version')
 	});
 
 // Get Mos --help
-program.command('moshelp')
-	.version('Mongoose OS Help')
-	.description('Mongoose OS Help')
-	.option("--help", "Return Mongoose OS Version")
+program.command('ui')
+	.version('Mongoose OS Gui')
+	.description('Start Mongoose OS User Interface')
+	// .option("--help", "Return Mongoose OS Version")
 	.action(function () {
 		// gui();
-		const gui = spawn('~/.mos/bin/mos ui');
+		// 	const gui = spawn('~/.mos/bin/mos ui');
 
-	gui.stdout.on('data', data => {
-			console.log(`stdout: ${data}`);
+		// gui.stdout.on('data', data => {
+		// 		console.log(`stdout: ${data}`);
+		// 	});
+
+		// child = exec("pwd", function (error, stdout, stderr) {
+		//   sys.print('stdout: ' + stdout);
+		//   sys.print('stderr: ' + stderr);
+		//   if (error !== null) {
+		//     console.log('exec error: ' + error);
+		//   }
+
+		// });
+
+		const cmd = '~/.mos/bin/mos ui';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
 		});
+log(chalk.yellow('MOS running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
 
-// child = exec("pwd", function (error, stdout, stderr) {
-//   sys.print('stdout: ' + stdout);
-//   sys.print('stderr: ' + stderr);
-//   if (error !== null) {
-//     console.log('exec error: ' + error);
-//   }
-  
-// });
 	});
 
 program.parse(process.argv);
@@ -148,3 +156,4 @@ program.parse(process.argv);
 
 // if program was called with no arguments, show help.
 if (program.args.length === 0) program.help();
+
