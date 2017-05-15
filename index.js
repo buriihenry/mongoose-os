@@ -120,7 +120,7 @@ program.command('version')
 		return resultObject;
 	});
 
-// Get Mos --help
+// Start MOS UI
 program.command('ui')
 	.version('Mongoose OS Gui')
 	.description('Start Mongoose OS User Interface')
@@ -147,7 +147,45 @@ program.command('ui')
 			// command output is in stdout
 
 		});
-log(chalk.yellow('MOS running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
+log(chalk.yellow('MOS UI running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
+
+	});
+
+    // Init a Directory for mos app
+program.command('init')
+	.version(1)
+	.description('Initialise firmware directory structure in the current directory')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+		// gui();
+		// 	const gui = spawn('~/.mos/bin/mos ui');
+
+		// gui.stdout.on('data', data => {
+		// 		console.log(`stdout: ${data}`);
+		// 	});
+
+		// child = exec("pwd", function (error, stdout, stderr) {
+		//   sys.print('stdout: ' + stdout);
+		//   sys.print('stderr: ' + stderr);
+		//   if (error !== null) {
+		//     console.log('exec error: ' + error);
+		//   }
+
+		// });
+
+		const cmd = '~/.mos/bin/mos init';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		  console.log(stdout);
+		  console.log(stderr);
+		  if (error !== null) {
+		    console.log('exec error: ' + error);
+		  }
+
+
+		});
+log(chalk.yellow('MOS UI running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
 
 	});
 
