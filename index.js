@@ -24,76 +24,20 @@ const spawn = require('child_process').spawn;
 const log = console.log;
 
 // clear();
-const welcometxt = console.log(
+const welcometxt = log(
 	chalk.yellow(
 		figlet.textSync('MOS-CLI', {
 			horizontalLayout: 'full'
 		})
 	)
 );
-//List Files  
-// const ls = spawn('ls', ['./']);
 
-// ls.stdout.on('data', data => {
-// 	console.log(`stdout: ${data}`);
-// });
-/**
-//  * list function definition
-//  *
-//  */
-let list = (directory, options) => {
-	const cmd = 'ls';
-	let params = [];
-
-	if (options.all) params.push("a");
-	if (options.long) params.push("l");
-	let parameterizedCommand = params.length ?
-		cmd + ' -' + params.join('') :
-		cmd;
-	if (directory) parameterizedCommand += ' ' + directory;
-
-	let output = (error, stdout, stderr) => {
-		if (error) console.log(chalk.red.bold.underline("exec error:") + error);
-		if (stdout) console.log(chalk.green.bold.underline("Result:") + stdout);
-		if (stderr) console.log(chalk.red("Error: ") + stderr);
-	};
-
-	exec(parameterizedCommand, output);
-
-};
 const getMachineType = function () {
-	// return os.platform();
-	console.log('oya');
+	log('Returning Machine Type');
 };
 const update = function () {
-	// return os.platform();
-	console.log('oya');
+	log('Fetching Update');
 };
-// const gui = function(){
-// console.log("Starting Gui");
-// const ls = spawn( 'ls', [  './' ] );
-
-// ls.stdout.on( 'data', data => {
-//     console.log( `stdout: ${data}` );
-// });
-// }
-
-// // program
-// //     .version(pkg.version)
-// //     .command('list [directory]')
-// //     .option('-a, --all', 'List all')
-// //     .option("--machineType","return machine type")
-// //     .option('-l, --long','Long list format')
-// //     // .action(hi)
-// //     .action(welcometxt)
-// //     .action(function(cmd){
-// //         var resultObject = {};
-
-// //         if(cmd.machineType){
-// //             resultObject.machineType = getMachineType();
-// //         }
-// //         return resultObject;
-// //     });
 program.command('info')
 	.version('Version ' + pkg.version)
 	.description('Main')
@@ -147,11 +91,11 @@ program.command('ui')
 			// command output is in stdout
 
 		});
-log(chalk.yellow('MOS UI running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
+		log(chalk.yellow('MOS UI running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
 
 	});
 
-    // Init a Directory for mos app
+// Init a Directory for mos app
 program.command('init')
 	.version(1)
 	.description('Initialise firmware directory structure in the current directory')
@@ -177,21 +121,30 @@ program.command('init')
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
 
-		  console.log(stdout);
-		  console.log(stderr);
-		  if (error !== null) {
-		    console.log('exec error: ' + error);
-		  }
+			log(stdout);
+			log(stderr);
+			if (error !== null) {
+				log('exec error: ' + error);
+			}
 
 
 		});
-log(chalk.yellow('MOS UI running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
+		const dir = function () {
+			exec('pwd', function (error, stdout, stderr) {
+				log(stdout);
+				log(stderr);
+				if (error !== null) {
+					log('Execution error: ' + error);
+				}
+
+			});
+		}
+
+		log(chalk.yellow('Initializing Firmware project in : '));   dir();
 
 	});
 
 program.parse(process.argv);
 
-
-// if program was called with no arguments, show help.
 if (program.args.length === 0) program.help();
 
