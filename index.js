@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+// Add https://github.com/mikaelbr/node-notifier
 'use strict';
 const chalk = require('chalk');
 const clear = require('clear');
@@ -97,7 +97,6 @@ program.command('ui')
 
 // Init a Directory for mos app
 program.command('init')
-	.version(1)
 	.description('Initialise firmware directory structure in the current directory')
 	// .option("--help", "Return Mongoose OS Version")
 	.action(function () {
@@ -145,6 +144,36 @@ program.command('init')
 	});
 
 program.parse(process.argv);
+//Build
+program.command('build')
+	.description('Build a firmware from the sources located in the current directory')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+		// gui();
+		// 	const gui = spawn('~/.mos/bin/mos ui');
+
+		// gui.stdout.on('data', data => {
+		// 		console.log(`stdout: ${data}`);
+		// 	});
+
+		// child = exec("pwd", function (error, stdout, stderr) {
+		//   sys.print('stdout: ' + stdout);
+		//   sys.print('stderr: ' + stderr);
+		//   if (error !== null) {
+		//     console.log('exec error: ' + error);
+		//   }
+
+		// });
+
+		const cmd = '~/.mos/bin/mos build';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Building Firmware'));
+
+	});
+
 
 if (program.args.length === 0) program.help();
 
