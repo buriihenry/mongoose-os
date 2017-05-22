@@ -1,5 +1,5 @@
 {
-  "name": "mos",
+  "name": "mos-tool",
   "version": "1.0.0",
   "description": "Node Wrapper for Mongoose OS.",
   "main": "\t",
@@ -40,7 +40,7 @@
     "touch": "^1.0.0"
   },
   "bin": {
-    "mos-cli": "./index.js"
+    "mos-tool": "./index.js"
   },
   "preferGlobal": true
 }
