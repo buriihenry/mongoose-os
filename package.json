@@ -1,14 +1,17 @@
 {
-  "name": "mos-cli",
+  "name": "mos",
   "version": "1.0.0",
-  "description": "Mongoose OS npm wrapper.",
+  "description": "Node Wrapper for Mongoose OS.",
   "main": "\t",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node ./postinstall.js",
+    "postupdate": "node ./postinstall.js"
+
   },
   "repository": {
     "type": "git",
-    "url": "github.com/denzelwamburu/mos-cli"
+    "url": "git://github.com/denzelwamburu/mos"
   },
   "keywords": [
     "mongoose-os",
@@ -16,6 +19,9 @@
     "mongoose",
     "embedded-scripting"
   ],
+  "bugs": {
+    "url": "https://github.com/denzelwamburu/mos/issues"
+  },
   "author": "Denzel Wamburu",
   "license": "ISC",
   "dependencies": {
@@ -27,12 +33,14 @@
     "inquirer": "^3.0.6",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
+    "ora": "^1.2.0",
     "preferences": "^0.2.1",
+    "request": "^2.81.0",
     "shelljs": "^0.7.7",
     "touch": "^1.0.0"
   },
   "bin": {
-    "devise": "./index.js"
+    "mos-cli": "./index.js"
   },
   "preferGlobal": true
 }
