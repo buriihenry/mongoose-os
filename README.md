@@ -11,7 +11,9 @@ Mongoose OS docs [https://mongoose-os.com/docs/](https://mongoose-os.com/docs/)
 
 `$ mos --help`
 
-The Mongoose OS command line tool, v. 20170430-122307/master@4277964b.'
+Set port to use: 
+
+`export MOS_PORT=YOUR_SERIAL_PORT  # E.g. /dev/ttyUSB0`
 
  Usage:
  ` mos <command>`
