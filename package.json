@@ -1,6 +1,6 @@
 {
-  "name": "mos-tool",
-  "version": "1.0.0",
+  "name": "mongoose-os",
+  "version": "0.0.1",
   "description": "Node Wrapper for Mongoose OS.",
   "main": "\t",
   "scripts": {
