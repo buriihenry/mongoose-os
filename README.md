@@ -11,8 +11,10 @@ Mongoose OS docs [https://mongoose-os.com/docs/](https://mongoose-os.com/docs/)
 
 `$ mos --help`
 
-The Mongoose OS command line tool, v. 20170430-122307/master@4277964b. Usage:
-  mos <command>
+The Mongoose OS command line tool, v. 20170430-122307/master@4277964b.'
+
+ Usage:
+ ` mos <command>`
 
 Commands:
 ---------
@@ -51,5 +53,5 @@ Commands:
 Global Flags:
 
  ` --verbose `     Verbose output. Optional, default value: "false"
- 
+
   `--logtostderr`  log to standard error instead of files. Optional, default value: "false"`
