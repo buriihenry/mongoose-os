@@ -1,6 +1,6 @@
 {
   "name": "mongoose-os",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Node Wrapper for Mongoose OS.",
   "main": "\t",
   "scripts": {
