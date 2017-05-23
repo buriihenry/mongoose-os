@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/denzelwamburu/mos-tool"
+    "url": "git://github.com/denzelwamburu/mongoose-os"
   },
   "keywords": [
     "mongoose-os",
@@ -19,7 +19,7 @@
     "embedded-scripting"
   ],
   "bugs": {
-    "url": "https://github.com/denzelwamburu/mos-tool/issues"
+    "url": "https://github.com/denzelwamburu/mongoose-os/issues"
   },
   "author": "Denzel Wamburu",
   "license": "ISC",
