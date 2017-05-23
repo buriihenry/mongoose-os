@@ -26,7 +26,7 @@ const log = console.log;
 // clear();
 const welcometxt = log(
 	chalk.yellow(
-		figlet.textSync('MOS-CLI', {
+		figlet.textSync('MOS-TOOl', {
 			horizontalLayout: 'full'
 		})
 	)
@@ -40,7 +40,7 @@ const update = function () {
 };
 program.command('info')
 	.version('Version ' + pkg.version)
-	.description('Main')
+	.description('Show Version of MOS Tool')
 	.option("--machineType", "return machine type")
 	.action(function (cmd) {
 		var resultObject = {};
@@ -70,21 +70,6 @@ program.command('ui')
 	.description('Start Mongoose OS User Interface')
 	// .option("--help", "Return Mongoose OS Version")
 	.action(function () {
-		// gui();
-		// 	const gui = spawn('~/.mos/bin/mos ui');
-
-		// gui.stdout.on('data', data => {
-		// 		console.log(`stdout: ${data}`);
-		// 	});
-
-		// child = exec("pwd", function (error, stdout, stderr) {
-		//   sys.print('stdout: ' + stdout);
-		//   sys.print('stderr: ' + stderr);
-		//   if (error !== null) {
-		//     console.log('exec error: ' + error);
-		//   }
-
-		// });
 
 		const cmd = '~/.mos/bin/mos ui';
 		exec(cmd, function (error, stdout, stderr) {
@@ -100,22 +85,6 @@ program.command('init')
 	.description('Initialise firmware directory structure in the current directory')
 	// .option("--help", "Return Mongoose OS Version")
 	.action(function () {
-		// gui();
-		// 	const gui = spawn('~/.mos/bin/mos ui');
-
-		// gui.stdout.on('data', data => {
-		// 		console.log(`stdout: ${data}`);
-		// 	});
-
-		// child = exec("pwd", function (error, stdout, stderr) {
-		//   sys.print('stdout: ' + stdout);
-		//   sys.print('stderr: ' + stderr);
-		//   if (error !== null) {
-		//     console.log('exec error: ' + error);
-		//   }
-
-		// });
-
 		const cmd = '~/.mos/bin/mos init';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
@@ -143,27 +112,11 @@ program.command('init')
 
 	});
 
-program.parse(process.argv);
 //Build
 program.command('build')
 	.description('Build a firmware from the sources located in the current directory')
 	// .option("--help", "Return Mongoose OS Version")
 	.action(function () {
-		// gui();
-		// 	const gui = spawn('~/.mos/bin/mos ui');
-
-		// gui.stdout.on('data', data => {
-		// 		console.log(`stdout: ${data}`);
-		// 	});
-
-		// child = exec("pwd", function (error, stdout, stderr) {
-		//   sys.print('stdout: ' + stdout);
-		//   sys.print('stderr: ' + stderr);
-		//   if (error !== null) {
-		//     console.log('exec error: ' + error);
-		//   }
-
-		// });
 
 		const cmd = '~/.mos/bin/mos build';
 		exec(cmd, function (error, stdout, stderr) {
@@ -173,6 +126,183 @@ program.command('build')
 		log(chalk.yellow('Building Firmware'));
 
 	});
+
+// flash
+	program.command('flash')
+	.description('Build a firmware from the sources located in the current directory')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos falsh';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Flashing Firmware'));
+
+	});
+program.command('flash-read')
+	.description('Read a region of flash')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos flash-read';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Reading A Region of Flash'));
+
+	});
+
+program.command('console')
+	.description('Simple serial port console')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos console';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Serial port console output'));
+
+	});	
+	
+program.command('ls')
+	.description('List files at the local device`s filesystem')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos ls';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('All Files in local Device Firmaware'));
+
+	});	
+		
+program.command('get')
+	.description('Read file from the local device`s filesystem and print to stdout')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos get';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Read file from the local device`s filesystem and print to stdout'));
+
+	});	
+	program.command('put')
+	.description('Put file from the host machine to the local device`s filesystem')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos put';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Put file from the host machine to the local device`s filesystem'));
+
+	});	
+		program.command('rm')
+	.description(' Delete a file from the device`s filesystem')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos rm';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Delete a file from the device`s filesystem'));
+
+	});	
+
+		program.command('config-get')
+	.description('Get config value from the locally attached device')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos config-get';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Get config value from the locally attached device'));
+
+	});	
+		program.command('config-set')
+	.description('Set config value at the locally attached device')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos config-set';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Set config value at the locally attached device'));
+
+	});	
+	program.command('call')
+	.description('Perform a device API call. "mos call RPC.List" shows available methods')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos call';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Perform a device API call. "mos call RPC.List" shows available methods'));
+
+	});	
+	program.command('aws-iot-setup')
+	.description('Provision the device for AWS IoT cloud')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos aws-iot-setup';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Provision the device for AWS IoT cloud'));
+
+	});
+	program.command('update')
+	.description('Self-update mos tool')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos update';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Self-update mos tool'));
+
+	});	
+	program.command('wifi')
+	.description('Setup WiFi - shortcut to config-set wifi...')
+	// .option("--help", "Return Mongoose OS Version")
+	.action(function () {
+
+		const cmd = '~/.mos/bin/mos wifi';
+		exec(cmd, function (error, stdout, stderr) {
+			// command output is in stdout
+
+		});
+		log(chalk.yellow('Setup WiFi - shortcut to config-set wifi...'));
+
+	});	
+
+program.parse(process.argv);
 
 
 if (program.args.length === 0) program.help();

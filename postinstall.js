@@ -9,7 +9,7 @@ const Ora = require('ora');
 const cmd = 'curl -fsSL https://mongoose-os.com/downloads/mos/install.sh | /bin/sh';
 
 const spinner = new Ora({
-	text: 'Downloading MOS-CLI',
+	text: 'Downloading MOS-TOOL',
 	spinner: 'bouncingBar',
     color: 'yellow'
 
