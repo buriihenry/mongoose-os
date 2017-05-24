@@ -43,26 +43,21 @@ program.command('info')
 	.description('Show Version of MOS Tool')
 	.option("--machineType", "return machine type")
 	.action(function (cmd) {
-		var resultObject = {};
+		log(chalk.green('Mongoose-os Tool Version ' + pkg.version))
 
-		if (cmd.machineType) {
-			resultObject.machineType = getMachineType();
-		}
-		return resultObject;
 	});
 
 program.command('version')
 	.version('Version ' + pkg.version)
 	.description('Mos Version')
 	.option("--machineType", "return machine type")
-	.action(function (cmd) {
-		var resultObject = {};
-
-		if (cmd.version) {
-			resultObject.machineType = getMachineType();
-		}
-		return resultObject;
-	});
+	.action(
+		function (cmd) {
+		
+	log(chalk.green('Version ' + pkg.version))
+		
+	}
+	);
 
 // Start MOS UI
 program.command('ui')
@@ -89,8 +84,8 @@ program.command('init')
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
 
-			log(stdout);
-			log(stderr);
+			log(chalk.green(stdout));
+			log(chalk.red(stderr));
 			if (error !== null) {
 				log('exec error: ' + error);
 			}
@@ -121,7 +116,8 @@ program.command('build')
 		const cmd = '~/.mos/bin/mos build';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Building Firmware'));
 
@@ -136,7 +132,8 @@ program.command('build')
 		const cmd = '~/.mos/bin/mos falsh';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Flashing Firmware'));
 
@@ -149,7 +146,8 @@ program.command('flash-read')
 		const cmd = '~/.mos/bin/mos flash-read';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Reading A Region of Flash'));
 
@@ -163,7 +161,8 @@ program.command('console')
 		const cmd = '~/.mos/bin/mos console';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Serial port console output'));
 
@@ -177,7 +176,8 @@ program.command('ls')
 		const cmd = '~/.mos/bin/mos ls';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('All Files in local Device Firmaware'));
 
@@ -191,7 +191,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos get';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Read file from the local device`s filesystem and print to stdout'));
 
@@ -204,7 +205,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos put';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Put file from the host machine to the local device`s filesystem'));
 
@@ -217,7 +219,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos rm';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Delete a file from the device`s filesystem'));
 
@@ -231,7 +234,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos config-get';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Get config value from the locally attached device'));
 
@@ -244,7 +248,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos config-set';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Set config value at the locally attached device'));
 
@@ -257,7 +262,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos call';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Perform a device API call. "mos call RPC.List" shows available methods'));
 
@@ -270,7 +276,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos aws-iot-setup';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Provision the device for AWS IoT cloud'));
 
@@ -283,7 +290,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos update';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Self-update mos tool'));
 
@@ -296,7 +304,8 @@ program.command('get')
 		const cmd = '~/.mos/bin/mos wifi';
 		exec(cmd, function (error, stdout, stderr) {
 			// command output is in stdout
-
+	log(chalk.green(stdout));
+			log(chalk.red(stderr));
 		});
 		log(chalk.yellow('Setup WiFi - shortcut to config-set wifi...'));
 
