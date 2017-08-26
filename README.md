@@ -1,5 +1,7 @@
 ##  Mongoose OS Installer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/denzelwamburu/mongoose-os.svg)](https://greenkeeper.io/)
+
 Nodejs Wrapper for Mongoose-OS 🎁 📦 🎉.
 
     npm install -g mongoose-os
