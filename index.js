@@ -38,6 +38,23 @@ const getMachineType = function() {
 const update = function() {
     log('Fetching Update');
 };
+
+// Start MOS UI
+program.command('ui')
+    .version('Mongoose OS Gui')
+    .description('Start Mongoose OS User Interface')
+    // .option("--help", "Return Mongoose OS Version")
+    .action(function() {
+
+        const cmd = '~/.mos/bin/mos ui';
+        exec(cmd, function(error, stdout, stderr) {
+            // command output is in stdout
+
+        });
+        log(chalk.yellow('MOS UI running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
+
+    });
+
 program.command('info')
     .version('Version ' + pkg.version)
     .description('Show Version of MOS Tool')
@@ -58,22 +75,6 @@ program.command('version')
 
         }
     );
-
-// Start MOS UI
-program.command('ui')
-    .version('Mongoose OS Gui')
-    .description('Start Mongoose OS User Interface')
-    // .option("--help", "Return Mongoose OS Version")
-    .action(function() {
-
-        const cmd = '~/.mos/bin/mos ui';
-        exec(cmd, function(error, stdout, stderr) {
-            // command output is in stdout
-
-        });
-        log(chalk.yellow('MOS UI running at', chalk.underline.bgRed('http://127.0.0.1:1992/')));
-
-    });
 
 // Init a Directory for mos app
 program.command('init')
